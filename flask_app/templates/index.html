@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard | ChurnAI
+{% endblock %}
+
+{% block page_title %}
+Executive Dashboard
+{% endblock %}
+
+{% block page_subtitle %}
+Customer churn monitoring and predictive analytics
+{% endblock %}
+
+{% block content %}
+
+<div class="kpi-grid">
+
+    <div class="kpi-card">
+        <div class="kpi-label">
+            TOTAL CUSTOMERS
+        </div>
+
+        <div
+            class="kpi-value"
+            id="dashboardTotalCustomers"
+        >
+            -
+        </div>
+
+        <div class="kpi-detail">
+            Eligible customer portfolio
+        </div>
+    </div>
+
+
+    <div class="kpi-card">
+        <div class="kpi-label">
+            OBSERVED CHURN RATE
+        </div>
+
+        <div
+            class="kpi-value"
+            id="dashboardChurnRate"
+        >
+            -
+        </div>
+
+        <div
+            class="kpi-detail"
+            id="dashboardChurnDetail"
+        >
+            -
+        </div>
+    </div>
+
+
+    <div class="kpi-card">
+        <div class="kpi-label">
+            MODEL ROC-AUC
+        </div>
+
+        <div
+            class="kpi-value"
+            id="dashboardRocAuc"
+        >
+            -
+        </div>
+
+        <div class="kpi-detail">
+            XGBoost final model
+        </div>
+    </div>
+
+
+    <div class="kpi-card">
+        <div class="kpi-label">
+            MODEL PR-AUC
+        </div>
+
+        <div
+            class="kpi-value"
+            id="dashboardPrAuc"
+        >
+            -
+        </div>
+
+        <div class="kpi-detail">
+            Imbalanced churn evaluation
+        </div>
+    </div>
+
+</div>
+
+
+<div class="dashboard-grid">
+
+    <div class="panel">
+
+        <h3>
+            Platform Overview
+        </h3>
+
+        <p>
+            This platform combines customer data engineering,
+            machine learning, churn risk scoring, model
+            governance and decision-support analytics within
+            a unified banking environment.
+        </p>
+
+        <br>
+
+        <p>
+            The prediction engine is based on the validated
+            XGBoost pipeline and exposes customer-level churn
+            probabilities through the Flask application.
+        </p>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h3>
+            Model Performance
+        </h3>
+
+        <div class="metric-row">
+            <span class="metric-name">
+                Recall
+            </span>
+
+            <span
+                class="metric-value"
+                id="dashboardRecall"
+            >
+                -
+            </span>
+        </div>
+
+        <div class="metric-row">
+            <span class="metric-name">
+                Precision
+            </span>
+
+            <span
+                class="metric-value"
+                id="dashboardPrecision"
+            >
+                -
+            </span>
+        </div>
+
+        <div class="metric-row">
+            <span class="metric-name">
+                F1 Score
+            </span>
+
+            <span
+                class="metric-value"
+                id="dashboardF1"
+            >
+                -
+            </span>
+        </div>
+
+        <div class="metric-row">
+            <span class="metric-name">
+                Model
+            </span>
+
+            <span
+                class="metric-value"
+                id="dashboardModel"
+            >
+                -
+            </span>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+{% endblock %}

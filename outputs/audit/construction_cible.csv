@@ -1,0 +1,18 @@
+indicateur,valeur
+volume median de fermetures par jour actif,36
+journees de campagne detectees,7
+comptes fermes lors de ces campagnes,"80,464 (54.3 %)"
+clients deja partis avant la date de reference,"103,634"
+population retenue,"215,495"
+clients au label ambigu ecartes,7
+population finale,"215,488"
+churners,"12,062"
+taux de churn,5.60 %
+comptes sans date d'ouverture (conserves),"9,283"
+clients retires (tous comptes ouverts apres T),"20,368"
+dont churners retires,"1,514"
+population finale,"195,120"
+churners,"10,548"
+taux de churn,5.41 %
+churners partis avant T (doit etre 0),0
+"taux dans la plage bancaire usuelle [2 %, 20 %]",oui

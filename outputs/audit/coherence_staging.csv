@@ -1,0 +1,6 @@
+regle,lignes_concernees,action
+DATE_OF_BIRTH anterieure a 1900,27,valeur -> NaT
+"age hors [15, 100] ans",6794,DATE_OF_BIRTH -> NaT
+cloture anterieure a l'ouverture du compte,33571,colonne FLAG_CLOTURE_AVANT_OUVERTURE
+compte ouvert avant l'entree en relation,20293,colonne FLAG_COMPTE_AVANT_CLIENT
+echeance anterieure au demarrage du produit,2575,colonne FLAG_ECHEANCE_INCOHERENTE

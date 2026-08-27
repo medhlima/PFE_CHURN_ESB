@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}ATB Customer Churn Analytics{% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">ATB</div>
+
+            <div>
+                <h2>Churn Analytics</h2>
+                <span>Decision Intelligence</span>
+            </div>
+        </div>
+
+        <nav class="nav-menu">
+
+            <a href="{{ url_for('home') }}"
+            class="nav-item {% if request.endpoint == 'home' %}active{% endif %}">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('prediction_page') }}"
+            class="nav-item {% if request.endpoint == 'prediction_page' %}active{% endif %}">
+                Customer Risk Assessment
+            </a>
+
+            <a href="{{ url_for('customer360_page') }}"
+            class="nav-item {% if request.endpoint == 'customer360_page' %}active{% endif %}">
+                Customer 360
+            </a>
+
+            <a href="{{ url_for('analytics_page') }}"
+            class="nav-item {% if request.endpoint == 'analytics_page' %}active{% endif %}">
+                Analytics
+            </a>
+
+            <a href="{{ url_for('governance_page') }}"
+            class="nav-item {% if request.endpoint == 'governance_page' %}active{% endif %}">
+                Model Governance
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            System Operational
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <h1>
+                    {% block page_title %}
+                    Executive Dashboard
+                    {% endblock %}
+                </h1>
+
+                <p>
+                    {% block page_subtitle %}
+                    Customer Churn Intelligence & Decision Support Platform
+                    {% endblock %}
+                </p>
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="model-badge">
+                    Model
+                    <strong>XGBoost</strong>
+                </div>
+
+                <div class="system-badge">
+                    ● ONLINE
+                </div>
+
+            </div>
+
+        </header>
+
+        <section class="page-content">
+            {% block content %}
+            {% endblock %}
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+{% extends "base.html" %}
+
+{% block title %}
+Prediction | ChurnAI
+{% endblock %}
+
+{% block page_title %}
+Customer Risk Assessment
+{% endblock %}
+
+{% block page_subtitle %}
+Search a customer and evaluate churn risk using the production XGBoost model.
+{% endblock %}
+
+{% block content %}
+
+<div class="panel search-panel">
+
+    <h3>Customer Search</h3>
+
+    <div class="search-row">
+
+        <input
+            id="customerSearch"
+            placeholder="Customer ID"
+        >
+
+        <button
+            type="button"
+            id="loadCustomer"
+        >
+            Load Customer
+        </button>
+
+    </div>
+
+    <p class="search-help">
+
+        Example :
+        100001
+
+    </p>
+
+</div>
+
+<div class="prediction-layout">
+
+    <form id="predictionForm" class="panel prediction-form">
+
+        <h3>Customer Profile</h3>
+        <p class="section-description">
+            Enter customer information required by the validated XGBoost pipeline.
+        </p>
+
+        <div class="form-section">
+            <h4>Demographics</h4>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" step="0.1" name="AGE" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Age Group</label>
+                    <select name="TRANCHE_AGE" required>
+                        <option value="">Select</option>
+                        <option>18-25</option>
+                        <option>26-35</option>
+                        <option>36-50</option>
+                        <option>51-65</option>
+                        <option>65+</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Customer Tenure (Years)</label>
+                    <input
+                        type="number"
+                        step="0.1"
+                        name="ANCIENNETE_CLIENT_ANNEES"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Salary</label>
+                    <input
+                        type="number"
+                        step="0.01"
+                        name="SALAIRE"
+                        placeholder="Optional"
+                    >
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h4>Customer Profile</h4>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Customer Type</label>
+                    <select name="TYPE_CLIENT" required>
+                        <option value="">Select</option>
+                        <option>PPH</option>
+                        <option>PM</option>
+                        <option>PRO</option>
+                        <option>AUTRE</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Segment</label>
+                    <select name="SEGMENT" required>
+                        <option value="">Select</option>
+                        <option>Retail</option>
+                        <option>Corporate</option>
+                        <option>Corporate Small</option>
+                        <option>Elite</option>
+                        <option>Autre</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Marital Status</label>
+                    <select name="SITUATION_FAMILIALE" required>
+                        <option value="">Select</option>
+                        <option value="M">M</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="S">S</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Number of Accounts</label>
+                    <input
+                        type="number"
+                        min="0"
+                        name="NB_COMPTES"
+                        required
+                    >
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h4>KYC & Compliance</h4>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>KYC Score</label>
+                    <select name="SCORE_KYC" required>
+                        <option value="">Select</option>
+                        <option>LR</option>
+                        <option>MR</option>
+                        <option>H1</option>
+                        <option>H2</option>
+                        <option>H3</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Days Before Next Review</label>
+                    <input
+                        type="number"
+                        step="1"
+                        name="JOURS_AVANT_PROCHAINE_REVUE"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <div class="checkbox-grid">
+
+                <label>
+                    <input type="checkbox" name="HAS_SALAIRE">
+                    Salary Available
+                </label>
+
+                <label>
+                    <input type="checkbox" name="EST_TUNISIEN">
+                    Tunisian
+                </label>
+
+                <label>
+                    <input type="checkbox" name="EST_RESIDENT">
+                    Resident
+                </label>
+
+                <label>
+                    <input type="checkbox" name="DOSSIER_COMPLET">
+                    Complete File
+                </label>
+
+                <label>
+                    <input type="checkbox" name="KYC_RISQUE_ELEVE">
+                    High KYC Risk
+                </label>
+
+                <label>
+                    <input type="checkbox" name="REVUE_EN_RETARD">
+                    Review Overdue
+                </label>
+
+                <label>
+                    <input type="checkbox" name="A_HISTORIQUE_REVUE">
+                    Review History Available
+                </label>
+
+            </div>
+        </div>
+
+        <button type="submit" class="predict-button">
+            Run Churn Prediction
+        </button>
+
+    </form>
+
+
+    <div class="panel prediction-result">
+
+        <h3>Prediction Result</h3>
+
+        <div id="emptyResult" class="empty-result">
+            Fill in the customer profile and run the model.
+        </div>
+
+        <div id="resultContent" class="result-content hidden">
+
+            <div class="result-probability">
+                <span>Churn Probability</span>
+                <strong id="probabilityValue">-</strong>
+            </div>
+
+            <div class="risk-indicator">
+                <span>Risk Level</span>
+                <strong id="riskLevel">-</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Prediction</span>
+                <strong id="predictionLabel">-</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Model</span>
+                <strong>XGBoost</strong>
+            </div>
+
+            <div class="result-row">
+                <span>Decision Threshold</span>
+                <strong>50%</strong>
+            </div>
+            <div class="explanation-section">
+
+            <div class="explanation-header">
+
+                <div>
+                    <h4>Risk Explanation</h4>
+
+                    <p>
+                        Main factors influencing this
+                        customer's churn score.
+                    </p>
+                </div>
+
+                <span class="xai-badge">
+                    SHAP
+                </span>
+
+            </div>
+
+            <div id="explanationFactors">
+            </div>
+
+        </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+{% endblock %}

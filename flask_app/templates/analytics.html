@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block title %}
+Analytics | ChurnAI
+{% endblock %}
+
+{% block page_title %}
+Portfolio Analytics
+{% endblock %}
+
+{% block page_subtitle %}
+Churn concentration and customer portfolio segmentation
+{% endblock %}
+
+{% block content %}
+
+<div id="analyticsLoading" class="panel">
+    Loading portfolio analytics...
+</div>
+
+
+<div id="analyticsContent" class="hidden">
+
+    <!-- =========================
+         PORTFOLIO KPIs
+         ========================= -->
+
+    <div class="kpi-grid">
+
+        <div class="kpi-card">
+            <div class="kpi-label">
+                TOTAL CUSTOMERS
+            </div>
+
+            <div
+                class="kpi-value"
+                id="analyticsTotalCustomers"
+            >
+                -
+            </div>
+
+            <div class="kpi-detail">
+                Eligible portfolio
+            </div>
+        </div>
+
+
+        <div class="kpi-card">
+            <div class="kpi-label">
+                CHURN CUSTOMERS
+            </div>
+
+            <div
+                class="kpi-value"
+                id="analyticsChurnCustomers"
+            >
+                -
+            </div>
+
+            <div class="kpi-detail">
+                Observed churners
+            </div>
+        </div>
+
+
+        <div class="kpi-card">
+            <div class="kpi-label">
+                NON-CHURN CUSTOMERS
+            </div>
+
+            <div
+                class="kpi-value"
+                id="analyticsNonChurnCustomers"
+            >
+                -
+            </div>
+
+            <div class="kpi-detail">
+                Retained customers
+            </div>
+        </div>
+
+
+        <div class="kpi-card">
+            <div class="kpi-label">
+                OBSERVED CHURN RATE
+            </div>
+
+            <div
+                class="kpi-value"
+                id="analyticsChurnRate"
+            >
+                -
+            </div>
+
+            <div class="kpi-detail">
+                Portfolio-level rate
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SEGMENTATION
+         ========================= -->
+
+    <div class="analytics-grid">
+
+        <div class="panel">
+
+            <div class="analytics-panel-header">
+                <div>
+                    <h3>Churn by Customer Segment</h3>
+                    <p>
+                        Segments ranked by observed churn rate.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                id="segmentAnalytics"
+                class="analytics-bars"
+            ></div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <div class="analytics-panel-header">
+                <div>
+                    <h3>Churn by Customer Type</h3>
+                    <p>
+                        Comparison across customer populations.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                id="typeAnalytics"
+                class="analytics-bars"
+            ></div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <div class="analytics-panel-header">
+                <div>
+                    <h3>Churn by Age Group</h3>
+                    <p>
+                        Churn concentration across age bands.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                id="ageAnalytics"
+                class="analytics-bars"
+            ></div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <div class="analytics-panel-header">
+                <div>
+                    <h3>Churn by KYC Score</h3>
+                    <p>
+                        Churn behavior by KYC risk category.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                id="kycAnalytics"
+                class="analytics-bars"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel analytics-note">
+
+        <h3>Business Reading</h3>
+
+        <p>
+            These indicators describe observed historical churn
+            patterns in the eligible customer portfolio.
+            They complement individual churn predictions by
+            identifying customer groups where attrition is more
+            concentrated.
+        </p>
+
+    </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,377 @@
+{% extends "base.html" %}
+
+{% block title %}
+Model Governance | ChurnAI
+{% endblock %}
+
+{% block page_title %}
+Model Governance
+{% endblock %}
+
+{% block page_subtitle %}
+MLflow experiment tracking, model registry and deployment governance
+{% endblock %}
+
+
+{% block content %}
+
+<div
+    id="governanceLoading"
+    class="panel"
+>
+    Loading MLflow governance metadata...
+</div>
+
+
+<div
+    id="governanceContent"
+    class="hidden"
+>
+
+    <!-- ==============================================
+         MODEL STATUS
+         ============================================== -->
+
+    <div class="governance-hero panel">
+
+        <div>
+
+            <div class="governance-label">
+                CURRENT REGISTERED MODEL
+            </div>
+
+            <h2 id="govModelName">
+                -
+            </h2>
+
+            <p>
+                Validated customer churn model
+                registered through MLflow Model Registry.
+            </p>
+
+        </div>
+
+
+        <div class="governance-status">
+
+            <span
+                id="govRegistryStatus"
+                class="governance-status-badge"
+            >
+                -
+            </span>
+
+            <span
+                id="govVersion"
+                class="governance-version"
+            >
+                Version -
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================================
+         CORE GOVERNANCE
+         ============================================== -->
+
+    <div class="governance-grid">
+
+        <div class="panel">
+
+            <h3>Model Identity</h3>
+
+            <div class="metric-row">
+                <span class="metric-name">
+                    Algorithm
+                </span>
+
+                <span
+                    class="metric-value"
+                    id="govAlgorithm"
+                >
+                    -
+                </span>
+            </div>
+
+
+            <div class="metric-row">
+                <span class="metric-name">
+                    Registered Model
+                </span>
+
+                <span
+                    class="metric-value"
+                    id="govRegisteredModel"
+                >
+                    -
+                </span>
+            </div>
+
+
+            <div class="metric-row">
+                <span class="metric-name">
+                    Registry Version
+                </span>
+
+                <span
+                    class="metric-value"
+                    id="govRegistryVersion"
+                >
+                    -
+                </span>
+            </div>
+
+
+            <div class="metric-row">
+                <span class="metric-name">
+                    Registry Status
+                </span>
+
+                <span
+                    class="metric-value"
+                    id="govRegistryState"
+                >
+                    -
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h3>MLflow Lineage</h3>
+
+            <div class="metric-row">
+                <span class="metric-name">
+                    Experiment
+                </span>
+
+                <span
+                    class="metric-value"
+                    id="govExperiment"
+                >
+                    -
+                </span>
+            </div>
+
+
+            <div class="metric-row">
+                <span class="metric-name">
+                    Run
+                </span>
+
+                <span
+                    class="metric-value"
+                    id="govRunName"
+                >
+                    -
+                </span>
+            </div>
+
+
+            <div class="metric-row">
+                <span class="metric-name">
+                    Run Status
+                </span>
+
+                <span
+                    class="metric-value"
+                    id="govRunStatus"
+                >
+                    -
+                </span>
+            </div>
+
+
+            <div class="metric-row">
+                <span class="metric-name">
+                    Run Date
+                </span>
+
+                <span
+                    class="metric-value"
+                    id="govRunDate"
+                >
+                    -
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================================
+         PERFORMANCE
+         ============================================== -->
+
+    <div class="panel governance-performance">
+
+        <div class="governance-section-header">
+
+            <div>
+                <h3>Validated Model Performance</h3>
+
+                <p>
+                    Evaluation metrics logged during
+                    the final XGBoost MLflow run.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="governance-metrics-grid">
+
+            <div class="governance-metric">
+                <span>ROC-AUC</span>
+                <strong id="govRocAuc">-</strong>
+            </div>
+
+            <div class="governance-metric">
+                <span>PR-AUC</span>
+                <strong id="govPrAuc">-</strong>
+            </div>
+
+            <div class="governance-metric">
+                <span>Recall</span>
+                <strong id="govRecall">-</strong>
+            </div>
+
+            <div class="governance-metric">
+                <span>Precision</span>
+                <strong id="govPrecision">-</strong>
+            </div>
+
+            <div class="governance-metric">
+                <span>F1 Score</span>
+                <strong id="govF1">-</strong>
+            </div>
+
+            <div class="governance-metric">
+                <span>Accuracy</span>
+                <strong id="govAccuracy">-</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================================
+         DEPLOYMENT
+         ============================================== -->
+
+    <div class="governance-grid governance-bottom">
+
+        <div class="panel">
+
+            <h3>Deployment Configuration</h3>
+
+            <div class="metric-row">
+
+                <span class="metric-name">
+                    Prediction Service
+                </span>
+
+                <span
+                    class="metric-value"
+                    id="govPredictionService"
+                >
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="metric-row">
+
+                <span class="metric-name">
+                    Decision Threshold
+                </span>
+
+                <span
+                    class="metric-value"
+                    id="govThreshold"
+                >
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="metric-row">
+
+                <span class="metric-name">
+                    Explainability
+                </span>
+
+                <span
+                    class="metric-value"
+                    id="govExplainability"
+                >
+                    -
+                </span>
+
+            </div>
+
+
+            <div class="metric-row">
+
+                <span class="metric-name">
+                    API Status
+                </span>
+
+                <span
+                    class="metric-value"
+                    id="govApiStatus"
+                >
+                    -
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h3>MLflow Workspace</h3>
+
+            <p class="governance-description">
+
+                Open the MLflow interface to inspect
+                experiments, runs, metrics, artifacts
+                and registered model versions.
+
+            </p>
+
+            <a
+                href="http://127.0.0.1:5000"
+                target="_blank"
+                class="governance-button"
+            >
+                Open MLflow
+            </a>
+
+            <p class="governance-hint">
+                MLflow server must be running locally
+                on port 5000.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='js/main.js') }}"
+></script>
+
+{% endblock %}
