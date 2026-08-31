@@ -12,12 +12,17 @@
         rel="stylesheet"
         href="{{ url_for('static', filename='css/style.css') }}"
     >
+
+    {% block extra_css %}{% endblock %}
 </head>
 
 <body>
 
 <div class="app-layout">
 
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
     <aside class="sidebar">
 
         <div class="brand">
@@ -31,28 +36,45 @@
 
         <nav class="nav-menu">
 
-            <a href="{{ url_for('home') }}"
-            class="nav-item {% if request.endpoint == 'home' %}active{% endif %}">
+            <a
+                href="{{ url_for('home') }}"
+                class="nav-item {% if request.endpoint == 'home' %}active{% endif %}"
+            >
                 Dashboard
             </a>
 
-            <a href="{{ url_for('prediction_page') }}"
-            class="nav-item {% if request.endpoint == 'prediction_page' %}active{% endif %}">
+            <a
+                href="{{ url_for('prediction_page') }}"
+                class="nav-item {% if request.endpoint == 'prediction_page' %}active{% endif %}"
+            >
                 Customer Risk Assessment
             </a>
 
-            <a href="{{ url_for('customer360_page') }}"
-            class="nav-item {% if request.endpoint == 'customer360_page' %}active{% endif %}">
+            <a
+                href="{{ url_for('customer360_page') }}"
+                class="nav-item {% if request.endpoint == 'customer360_page' %}active{% endif %}"
+            >
                 Customer 360
             </a>
 
-            <a href="{{ url_for('analytics_page') }}"
-            class="nav-item {% if request.endpoint == 'analytics_page' %}active{% endif %}">
+            <a
+                href="{{ url_for('analytics_page') }}"
+                class="nav-item {% if request.endpoint == 'analytics_page' %}active{% endif %}"
+            >
                 Analytics
             </a>
 
-            <a href="{{ url_for('governance_page') }}"
-            class="nav-item {% if request.endpoint == 'governance_page' %}active{% endif %}">
+            <a
+                href="{{ url_for('powerbi') }}"
+                class="nav-item {% if request.endpoint == 'powerbi' %}active{% endif %}"
+            >
+                Power BI Analytics
+            </a>
+
+            <a
+                href="{{ url_for('governance_page') }}"
+                class="nav-item {% if request.endpoint == 'governance_page' %}active{% endif %}"
+            >
                 Model Governance
             </a>
 
@@ -65,11 +87,19 @@
 
     </aside>
 
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
     <main class="main-content">
 
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
         <header class="topbar">
 
-            <div>
+            <div class="topbar-title">
+
                 <h1>
                     {% block page_title %}
                     Executive Dashboard
@@ -81,6 +111,7 @@
                     Customer Churn Intelligence & Decision Support Platform
                     {% endblock %}
                 </p>
+
             </div>
 
             <div class="topbar-right">
@@ -98,9 +129,12 @@
 
         </header>
 
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
         <section class="page-content">
-            {% block content %}
-            {% endblock %}
+            {% block content %}{% endblock %}
         </section>
 
     </main>

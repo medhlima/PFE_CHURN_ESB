@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Power BI Analytics{% endblock %}
+
+{% block page_title %}Power BI Analytics{% endblock %}
+
+{% block page_subtitle %}
+Interactive dashboards for churn monitoring, segmentation and retention management
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/powerbi.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="powerbi-workspace">
+
+    <iframe
+        title="ATB Customer Churn Analytics"
+        src="https://app.powerbi.com/reportEmbed?reportId=f8037219-e4cd-412d-b7fe-c0e13962dc04&autoAuth=true&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730&filterPaneEnabled=false&navContentPaneEnabled=false"
+        frameborder="0"
+        allowfullscreen="true">
+    </iframe>
+
+</div>
+
+{% endblock %}

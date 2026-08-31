@@ -16,6 +16,9 @@ app = Flask(__name__)
 prediction_service = PredictionService()
 model_service = ModelService()
 
+from flask import Flask, render_template
+from flask import render_template
+
 @app.get("/")
 def home():
     return render_template("index.html")
@@ -241,6 +244,10 @@ def analytics_data():
                 "SCORE_KYC"
             ),
     })
+    
+@app.route("/powerbi")
+def powerbi():
+    return render_template("powerbi.html")
 
 @app.get("/api/governance")
 def governance_data():
