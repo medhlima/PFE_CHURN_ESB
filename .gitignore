@@ -18,3 +18,4 @@ outputs/power_bi/*.parquet
 structure_projet.txt
 
 .env
+power-bi/ATB_dash.pbix
