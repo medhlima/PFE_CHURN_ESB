@@ -1,317 +1,315 @@
 # Banking Customer Churn Intelligence Platform
 
-## PFE 2026
+End-to-end Business Analytics platform for customer churn prediction, explainability, governance and decision support in a banking context.
 
-End-to-end customer churn prediction and decision-support platform developed for a banking environment.
+The project combines:
 
-The project combines data engineering, machine learning, explainable AI, MLOps and business analytics to identify customers with a high probability of churn and support retention-oriented decision making.
-
----
-
-## Main Objectives
-
-- Prepare and validate banking customer data.
-- Analyze historical customer churn behavior.
-- Engineer relevant customer, banking and KYC features.
-- Train and compare several machine learning models.
-- Select and deploy the final XGBoost churn model.
-- Generate customer-level churn probabilities.
-- Explain predictions using SHAP.
-- Track experiments and model versions using MLflow.
-- Provide customer and portfolio analytics through a Flask web application.
+- Data Engineering
+- Machine Learning
+- Explainable AI
+- MLOps
+- PostgreSQL Data Warehousing
+- Power BI
+- Flask
 
 ---
 
-## Platform Modules
+## Project Objective
 
-### Executive Dashboard
+The platform aims to:
 
-Provides a global overview of the customer portfolio and the deployed model:
-
-- Total customers
-- Observed churn rate
-- ROC-AUC
-- PR-AUC
-- Recall
-- Precision
-- F1 Score
-- Deployed model
-
-### Customer Risk Assessment
-
-Provides customer-level churn prediction and explainability:
-
-- Customer search
-- Churn probability
-- CHURN / NON_CHURN prediction
-- Risk level
-- Decision threshold
-- SHAP explanation
-- Main factors increasing or reducing churn risk
-
-### Customer 360
-
-Provides a unified customer profile including:
-
-- Customer identity
-- Customer segment and type
-- Age and age group
-- Customer tenure
-- Number of accounts
-- Salary information
-- KYC information
-- Compliance indicators
-- Customer review status and history
-
-### Portfolio Analytics
-
-Provides portfolio-level historical churn analysis by:
-
-- Customer segment
-- Customer type
-- Age group
-- KYC score
-
-It complements individual churn predictions with a business-level view of churn concentration across the customer portfolio.
-
-### Model Governance
-
-Provides visibility into the machine learning lifecycle:
-
-- MLflow experiment
-- MLflow run
-- Registered model
-- Model version
-- Registry status
-- Model performance metrics
-- Prediction service configuration
-- SHAP explainability configuration
+- consolidate and validate banking data;
+- define a reliable point-in-time churn target;
+- predict customers at risk of churn;
+- explain model predictions;
+- track and govern machine learning experiments;
+- store analytical outputs in a PostgreSQL Data Warehouse;
+- support customer-level and portfolio-level decision making.
 
 ---
 
-## Machine Learning Model
+## Analytical Architecture
 
-The final selected and validated model is **XGBoost**.
+```text
+Banking Data
+    ↓
+Data Quality & Staging
+    ↓
+Point-in-Time Churn Target
+    ↓
+Feature Engineering
+    ↓
+Machine Learning
+    ↓
+SHAP Explainability
+    ↓
+MLflow Governance
+    ↓
+Customer Scoring
+    ↓
+PostgreSQL Data Warehouse
+    ↓
+Power BI + Flask Decision Support
+```
 
-### Model Performance
+---
+
+## Key Results
+
+- Final analytical population: **195,120 customers**
+- Churned customers: **10,548**
+- Actual churn rate: **5.41%**
+- Final selected model: **XGBoost**
+- Operational threshold: **0.50**
+
+### Final XGBoost Performance
 
 | Metric | Value |
 |---|---:|
-| ROC-AUC | 0.7122 |
-| PR-AUC | 0.2093 |
 | Recall | 0.5223 |
 | Precision | 0.1167 |
-| F1 Score | 0.1907 |
-| Accuracy | 0.7604 |
-
-Decision threshold: **0.50**
-
----
-
-## Explainable AI
-
-The platform integrates **SHAP (SHapley Additive exPlanations)** to provide interpretable customer-level churn predictions.
-
-For each prediction, the application identifies the main factors that:
-
-- increase the predicted churn risk;
-- reduce the predicted churn risk.
-
-This provides additional transparency and supports the interpretation of model decisions.
+| F1-score | 0.1907 |
+| ROC-AUC | 0.7122 |
+| PR-AUC | 0.2093 |
 
 ---
 
-## MLOps and Model Governance
+## Machine Learning Models
 
-MLflow is used throughout the machine learning lifecycle for:
+The following models were evaluated:
 
-- Experiment tracking
-- Model performance tracking
-- Artifact management
-- Model registration
-- Model versioning
-- Model governance
-
-### MLflow Configuration
-
-**Experiment:** `Banking_Customer_Churn`
-
-**Registered Model:** `Banking_Churn_Model`
-
-**Final Algorithm:** `XGBoost`
-
----
-
-## Technologies
-
-### Data Science and Machine Learning
-
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
+- Logistic Regression
+- Decision Tree
+- Random Forest
 - XGBoost
-- SHAP
 
-### MLOps
-
-- MLflow
-- Joblib
-
-### Web Application
-
-- Flask
-- HTML
-- CSS
-- JavaScript
-
-### Development and Analysis
-
-- Jupyter Notebook
-- Visual Studio Code
-- Git
-- GitHub
+XGBoost was selected based on its recall, ROC-AUC, PR-AUC and compatibility with SHAP explainability.
 
 ---
 
-## Project Structure
+## Explainability & Governance
 
-The main project directories are organized as follows:
+### SHAP
+Used for:
+
+- global feature importance;
+- individual churn prediction explanations.
+
+### MLflow
+Used to track:
+
+- experiments;
+- parameters;
+- metrics;
+- model artifacts;
+- model versions.
+
+Main experiment:
 
 ```text
-PFE_CHURN_ESB/
-│
-├── flask_app/
-│   ├── services/
-│   ├── static/
-│   │   ├── css/
-│   │   └── js/
-│   ├── templates/
-│   ├── app.py
-│   └── config.py
-│
-├── mlops/
-│   ├── compare_models.py
-│   ├── config.py
-│   ├── register_model.py
-│   └── track_experiments.py
-│
-├── models/
-├── notebooks/
-├── outputs/
-├── src/
-│
-├── mlflow.db
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
-
-### Directory Description
-
-- `src/` — data preparation and feature engineering scripts.
-- `notebooks/` — data exploration, preprocessing, modeling, evaluation and explainability notebooks.
-- `models/` — trained machine learning model artifacts.
-- `mlops/` — MLflow experiment tracking and model registry components.
-- `flask_app/` — Flask web application, prediction services and user interface.
-- `outputs/` — generated analytical results, figures and evaluation outputs.
-
----
-
-## Installation
-
-### 1. Create a virtual environment
-
-```bash
-python -m venv .venv
-```
-
-### 2. Activate the virtual environment
-
-On Windows:
-
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-### 3. Install project dependencies
-
-```bash
-pip install -r requirements.txt
+Banking_Customer_Churn
 ```
 
 ---
 
-## Running the Flask Application
+## PostgreSQL Data Warehouse
 
-From the project root directory, run:
+Database:
+
+```text
+atb_churn
+```
+
+Schemas:
+
+```text
+staging
+core
+dwh
+audit
+```
+
+### Dimensions
+
+- `dim_customer`
+- `dim_date`
+- `dim_branch`
+- `dim_risk`
+- `dim_model`
+
+### Fact Tables
+
+- `fact_customer_snapshot`
+- `fact_churn_scoring`
+
+Main DWH volumes:
+
+| Object | Rows |
+|---|---:|
+| staging.stg_customer_raw | 490,244 |
+| core.customer_target | 195,120 |
+| core.customer_features | 195,120 |
+| dwh.fact_customer_snapshot | 195,120 |
+| dwh.fact_churn_scoring | 195,120 |
+
+Run the ETL pipeline with:
+
+```bash
+python src/05_load_dwh.py
+```
+
+---
+
+## Power BI
+
+The final Power BI report contains three dashboards:
+
+### 1. Customer Portfolio Overview
+**Descriptive Analytics**
+
+Main focus:
+- portfolio structure;
+- customer activity;
+- account volumes;
+- branch distribution.
+
+### 2. Churn Analysis & Drivers
+**Diagnostic Analytics**
+
+Main focus:
+- actual churn;
+- churn concentration;
+- decomposition analysis;
+- key influencers;
+- branch-level churn.
+
+### 3. Retention & Risk Prioritization
+**Predictive / Decision Analytics**
+
+Main focus:
+- model-flagged customers;
+- risk distribution;
+- high-value customers at risk;
+- retention prioritization.
+
+Final Power BI file:
+
+```text
+power-bi/ATB_Customer_Churn_Analytics.pbix
+```
+
+---
+
+## Flask Application
+
+The Flask application provides customer-level decision support.
+
+Main modules:
+
+- Dashboard
+- Customer Risk Assessment
+- Customer 360
+- Analytics
+- Power BI Analytics
+- Model Governance
+
+Run the application from the project root:
 
 ```bash
 python -m flask_app.app
 ```
 
-The application runs locally at:
+Then open:
 
-`http://127.0.0.1:5001`
+```text
+http://127.0.0.1:5001
+```
 
-The main application modules include:
-
-- Executive Dashboard
-- Customer Risk Assessment
-- Customer 360
-- Portfolio Analytics
-- Model Governance
+Power BI is embedded directly inside the Flask application.
 
 ---
 
-## MLflow
+## Flask vs Power BI
 
-MLflow is used to inspect experiments, runs, metrics, artifacts and registered model versions.
-
-The project contains the MLflow configuration and tracking components under the `mlops/` directory.
-
-The Model Governance module of the Flask application also exposes the main information associated with the validated and registered model.
-
----
-
-## Data Confidentiality
-
-The original banking customer datasets are **not published in this repository**.
-
-Raw and processed customer datasets are excluded from GitHub in order to protect confidential banking information and avoid publishing sensitive or large data files.
-
-Consequently, some data-dependent functionalities require the corresponding datasets to be available locally.
+| Flask | Power BI |
+|---|---|
+| Individual customer analysis | Portfolio-level analysis |
+| Customer Risk Assessment | Portfolio monitoring |
+| Customer 360 | Churn diagnostics |
+| Local SHAP explanation | Segmentation |
+| Model Governance | Retention prioritization |
 
 ---
 
-## Current Project Status
+## Main Technologies
 
-The following components have been implemented:
+### Data Engineering
+- Python
+- Pandas
+- NumPy
+- PyArrow
+- PostgreSQL
+- SQLAlchemy
+- psycopg2
 
-- Data inventory and quality assessment
-- Data preprocessing
-- Feature engineering
-- Churn target definition
-- Exploratory data analysis
-- Machine learning preparation
-- Baseline model comparison
-- XGBoost modeling
-- Model evaluation
-- SHAP explainability
-- MLflow experiment tracking
-- MLflow Model Registry
-- Flask prediction API
-- Executive Dashboard
-- Customer Risk Assessment
-- Customer 360
-- Portfolio Analytics
-- Model Governance
+### Machine Learning
+- Scikit-learn
+- XGBoost
+
+### Explainability & MLOps
+- SHAP
+- MLflow
+
+### Decision Support
+- Flask
+- Power BI
+- HTML / CSS / JavaScript
+
+### Development
+- Jupyter Notebook
+- Git
+- GitHub
+- Visual Studio Code
+
+---
+
+## Project Structure
+
+```text
+PFE_CHURN_ESB/
+│
+├── flask_app/
+├── mlops/
+├── models/
+├── notebooks/
+├── outputs/
+├── power-bi/
+│   └── ATB_Customer_Churn_Analytics.pbix
+├── sql/
+├── src/
+│   ├── 05_load_dwh.py
+│   └── db/
+├── .gitignore
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Security
+
+Real banking data and database credentials are not included in the repository.
+
+The `.env` file is excluded from Git.
 
 ---
 
 ## Academic Context
 
-**Project:** Projet de Fin d'Études (PFE)  
-**Year:** 2026  
-**Domain:** Banking, Data Science, Machine Learning and Business Intelligence  
-**Topic:** Customer Churn Prediction and Decision-Support Platform
+Final Year Project  
+Master's Degree in Business Analytics  
+Academic Year: **2025–2026**
+
+Project domain:
+
+**Banking Customer Churn Prediction, Explainable AI and Decision Intelligence**
