@@ -52,3 +52,366 @@
         min-height: 680px;
     }
 }
+/* ===== POWER BI FULL SCREEN EMBED ===== */
+.page-content:has(.powerbi-workspace) {
+    padding-bottom: 0 !important;
+}
+
+.powerbi-workspace {
+    width: 100% !important;
+    height: calc(100vh - 165px) !important;
+    min-height: 700px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #0b0f12 !important;
+}
+
+.powerbi-workspace iframe {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 700px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+/* ===== FINAL POWER BI EMBED FIX ===== */
+.page-content:has(.powerbi-workspace) {
+    padding-bottom: 0 !important;
+}
+
+.powerbi-workspace {
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100vh - 170px) !important;
+    min-height: 720px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #0b0f12 !important;
+}
+
+/* Crop the empty Power BI band at the top */
+.powerbi-workspace iframe {
+    position: absolute !important;
+    top: -55px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100% + 55px) !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ===== FINAL POWER BI EMBED FIX ===== */
+.page-content:has(.powerbi-workspace) {
+    padding-bottom: 0 !important;
+}
+
+.powerbi-workspace {
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100vh - 170px) !important;
+    min-height: 720px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #0b0f12 !important;
+}
+
+/* Crop the empty Power BI band at the top */
+.powerbi-workspace iframe {
+    position: absolute !important;
+    top: -45px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100% + 55px) !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ===== FINAL POWER BI EMBED FIX ===== */
+.page-content:has(.powerbi-workspace) {
+    padding-bottom: 0 !important;
+}
+
+.powerbi-workspace {
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100vh - 170px) !important;
+    min-height: 720px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #0b0f12 !important;
+}
+
+/* Crop the empty Power BI band at the top */
+.powerbi-workspace iframe {
+    position: absolute !important;
+    top:-60px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100% + 55px) !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ===== FINAL POWER BI EMBED FIX ===== */
+.page-content:has(.powerbi-workspace) {
+    padding-bottom: 0 !important;
+}
+
+.powerbi-workspace {
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100vh - 170px) !important;
+    min-height: 720px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #0b0f12 !important;
+}
+
+/* Crop the empty Power BI band at the top */
+.powerbi-workspace iframe {
+    position: absolute !important;
+    top:-70px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100% + 55px) !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ===== FINAL POWER BI EMBED FIX ===== */
+.page-content:has(.powerbi-workspace) {
+    padding-bottom: 0 !important;
+}
+
+.powerbi-workspace {
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100vh - 170px) !important;
+    min-height: 720px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #0b0f12 !important;
+}
+
+/* Crop the empty Power BI band at the top */
+.powerbi-workspace iframe {
+    position: absolute !important;
+    top:-80px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100% + 55px) !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ===== FINAL POWER BI EMBED FIX ===== */
+.page-content:has(.powerbi-workspace) {
+    padding-bottom: 0 !important;
+}
+
+.powerbi-workspace {
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100vh - 170px) !important;
+    min-height: 720px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #0b0f12 !important;
+}
+
+/* Crop the empty Power BI band at the top */
+.powerbi-workspace iframe {
+    position: absolute !important;
+    top:-80px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100% + 88px) !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ===== FINAL POWER BI EMBED FIX ===== */
+.page-content:has(.powerbi-workspace) {
+    padding-bottom: 0 !important;
+}
+
+.powerbi-workspace {
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100vh - 170px) !important;
+    min-height: 720px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #0b0f12 !important;
+}
+
+/* Crop the empty Power BI band at the top */
+.powerbi-workspace iframe {
+    position: absolute !important;
+    top:-90px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100% + 88px) !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ===== FINAL POWER BI EMBED FIX ===== */
+.page-content:has(.powerbi-workspace) {
+    padding-bottom: 0 !important;
+}
+
+.powerbi-workspace {
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100vh - 170px) !important;
+    min-height: 720px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #0b0f12 !important;
+}
+
+/* Crop the empty Power BI band at the top */
+.powerbi-workspace iframe {
+    position: absolute !important;
+    top:-100px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100% + 88px) !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ===== POWER BI FINAL RESPONSIVE FIX ===== */
+.powerbi-workspace {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #0b0f12 !important;
+}
+
+.powerbi-workspace iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    display: block !important;
+}
+
+/* ===== REMOVE POWER BI WHITE EDGE ===== */
+.powerbi-workspace {
+    overflow: hidden !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.powerbi-workspace iframe {
+    left: -3px !important;
+    width: calc(100% + 6px) !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.page-content {
+    overflow-x: hidden !important;
+}
+
+/* ===== POWER BI FIT APPLICATION VIEWPORT ===== */
+.page-content:has(.powerbi-workspace) {
+    padding-bottom: 0 !important;
+    overflow: hidden !important;
+}
+
+.powerbi-workspace {
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100vh - 130px) !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: none !important;
+    background: #0b0f12 !important;
+}
+
+.powerbi-workspace iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: -3px !important;
+    width: calc(100% + 6px) !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+/* ===== REMOVE POWER BI SIDE WHITE MARGINS ===== */
+.powerbi-workspace {
+    position: relative !important;
+    width: 100% !important;
+    height: calc(100vh - 130px) !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #0b0f12 !important;
+}
+
+/* Keep Power BI canvas in 16:9 and center it */
+.powerbi-workspace iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+
+    height: 100% !important;
+    width: calc((100vh - 130px) * 1.77778) !important;
+    max-width: 100% !important;
+
+    min-height: 0 !important;
+    border: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: #0b0f12 !important;
+}
+
+/* ===== REMOVE FINAL POWER BI LEFT WHITE LINE ===== */
+.powerbi-workspace iframe {
+    clip-path: inset(0 0 0 3px) !important;
+}
+
